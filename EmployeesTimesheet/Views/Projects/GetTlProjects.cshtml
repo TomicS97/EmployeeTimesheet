@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BusinessLogic.BusinessObjects.ProjectViewModel>
+
+@{ ViewBag.Title = "GetTlProjects"; }
+
+<div class="jumbotron">
+    <h2>Projects</h2>
+
+    <hr />
+    @if (Request.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("Team Leader"))
+    {
+<div class="col-md-12 text-right" style="margin-bottom:20px;">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Spent time on projects", "SpentTimeOnProjects", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Deleted Projects", "DeletedProjects", "DeletedProjects", new { @class = "btn btn-danger" })
+</div>}
+    <table class="table table-responsive table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProjectName)
+                </th>
+                @if (User.IsInRole("Admin"))
+                {
+    <th>
+        @Html.DisplayNameFor(model => model.CreatedAt)
+    </th>}
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProjectName)
+    </td>
+    @if (User.IsInRole("Admin"))
+    {
+<td>
+    @Html.DisplayFor(modelItem => item.CreatedAt)
+</td>
+           }
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedDate)
+    </td>
+    <td class="text-center">
+        @if (Request.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("Team Leader"))
+        {
+@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+            <button class="btn btn-danger deleteProject" name="@item.Id">Delete</button>
+}
+        @Html.ActionLink("Details", "ProjectDetails", new { id = item.Id }, new { @class = "btn btn-primary" })
+    </td>
+</tr>
+}
+        </tbody>
+    </table>
+</div>
+@section Scripts {
+    <script src="~/App/project/project.delete.js"></script>
+}

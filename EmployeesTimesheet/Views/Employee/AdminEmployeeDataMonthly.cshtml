@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Employee Data Monthly";
+}
+@{
+    ViewBag.Title = "Data Monthly";
+}
+@section Styles
+{
+    <link href="~/Content/dateTimePicker/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*<link href="~/Content/dateTimePicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />*@
+}
+
+<h2>Employee Data Monthly</h2>
+<hr />
+<div class="row text-right">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-3">
+        <div class='input-group date' id='DateStart'>
+            <input type='text' class="form-control" name="DateStart" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-time"></span>
+            </span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class='input-group date' id='DateEnd'>
+            <input type='text' class="form-control" name="DateEnd" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-time"></span>
+            </span>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button id="btnGetData" class="btn btn-primary">Get Projects Data</button>
+    </div>
+</div>
+<hr />
+<div id="result" class="row"></div>
+
+
+
+
+@section scripts{
+    <script src="~/Content/dateTimePicker/jquery.min.js"></script>
+    <script src="~/Content/dateTimePicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/App/employeesData/emploees.data.monthly.js"></script>
+}
+
+

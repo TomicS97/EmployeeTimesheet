@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BusinessLogic.BusinessObjects.Dropdowns.ProjectTotalHoursViewModel>
+
+@{
+    ViewBag.Title = "SpentTimeOnProjects";
+}
+@section Styles {
+    <link href="~/Content/bootstrap-card.css" rel="stylesheet" />
+}
+<h2>Spent Time On Projects</h2>
+<hr />
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4">
+            <div class="card card-default" style="background-color: #fbfafa;">
+                <div class="card-body text-center">
+                    <h5 class="lead">Project name:  @Html.DisplayFor(modelItem => item.ProjectName)</h5>
+                    <p>Created Date: @Html.DisplayFor(modelItem => item.CreatedDate)</p>
+                    <p>Total Hours: @Html.DisplayFor(modelItem => item.TotalHours)</p>
+                    <p>Number of Tasks: @Html.DisplayFor(modelItem => item.TimeSheets.Count)</p>
+                    @if (!item.Status)
+                    {
+                        <p class="text-danger">Status: Inactive</p>
+                    }
+                    else
+                    {
+                        <p class="text-primary">Status: Active</p>
+                        @Html.ActionLink("Details", "ProjectDetails", new { id = item.Id }, new { @class = "btn btn-info" })
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

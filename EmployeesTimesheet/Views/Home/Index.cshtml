@@ -1,0 +1,21 @@
+﻿
+<div class="pull-right">
+    <h4> @HttpContext.Current.User.Identity.Name</h4>
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("Logout", "Registration", FormMethod.Post, new { id = "logoutForm" }))
+        {
+        <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+        }
+     }
+</div>
+<h1>Emploees Timesheet Welcome</h1>
+
+<div class="jumbotron">
+    <h4>
+        Go to
+        @Html.ActionLink("Projects", "GetTlProjects", "Projects", new { area = "" }, new { @class = "btn btn-primary" })
+    </h4>
+   
+</div>
+

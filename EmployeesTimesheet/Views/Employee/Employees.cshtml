@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BusinessLogic.BusinessObjects.EmployeeViewModel>
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h2>Employees</h2>
+<hr />
+<div class="col-md-12 text-right">
+    <p>
+        @Html.ActionLink("Register New Empoyee", "Register", "Registration", null, new { @class = "btn btn-info" })
+    </p>
+</div>
+<hr />
+
+<table class="table table-responsive table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.TeamLeader)
+                </th>
+                <th>
+                    @Html.Label("Position")
+                </th>
+            }
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeamLeader)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserRole)
+                    </td>
+                }
+                <td class="text-center">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

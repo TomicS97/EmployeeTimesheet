@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="DAL\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Model.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Project.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Update="TimeSheet.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Update="User.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

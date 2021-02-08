@@ -1,0 +1,8 @@
+﻿
+@{
+    ViewBag.Title = "AdminIndex";
+}
+
+<h2>AdminIndex</h2>
+<div>Welcome @(Request.IsAuthenticated? HttpContext.Current.User.Identity.Name : "")  </div>
+
